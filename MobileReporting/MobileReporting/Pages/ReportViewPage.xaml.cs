@@ -44,7 +44,7 @@ namespace MobileReporting.Pages
             //    throw;
             //}
             var htmlSource = new HtmlWebViewSource();
-            htmlSource.Html = @"<iframe width=""100%"" height=""100%"" src =""https://app.powerbi.com/view?r=eyJrIjoiNzIzYzM4ZTAtYzcxMy00ZmE1LTkxYzgtMTEzMDcwOTMyMmIxIiwidCI6IjAwYTNhYzRkLTY5MzUtNDVjYi04Mjk5LWI5ZmU0NGYwMzNmOCIsImMiOjJ9&isMobile=true"" frameborder=""0"" allowFullScreen=""true""></iframe>";
+            htmlSource.Html = _reportMetaData.EmbedHtml;
             EmbeddedReport_web.Source = htmlSource;
         }
     }
