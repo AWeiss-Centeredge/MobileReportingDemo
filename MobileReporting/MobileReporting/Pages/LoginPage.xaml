@@ -26,7 +26,8 @@
                    WidthRequest="300"
                    HorizontalOptions="CenterAndExpand"
                    VerticalOptions="CenterAndExpand"
-                   BackgroundColor="LightGray"></Entry>
+                   BackgroundColor="LightGray"
+                   IsPassword="True"></Entry>
             <Label x:Name="Error_lbl"
                    HorizontalOptions="CenterAndExpand"
                    BackgroundColor="Red"
