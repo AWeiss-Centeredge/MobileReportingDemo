@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MobileReporting.BusinessLogic.Models;
+using MobileReporting.BusinessLogic.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -14,21 +15,37 @@ namespace MobileReporting.Pages
     {
         private readonly ReportMetaData _reportMetaData;
 
+        private readonly IReportService _reportService;
+
         public ReportViewPage(ReportMetaData reportMetaData)
         {
+            _reportService = new ReportService();
+
             _reportMetaData = reportMetaData;
             InitializeComponent();
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
 
             this.Title = _reportMetaData.Name;
-            this.EmbeddedReport_web.Source = new UrlWebViewSource()
-            {
-                Url = _reportMetaData.EmbedUrl
-            };
+            //var report = await _reportService.GetBiReportAysnc(new Guid("55745a14-cb7a-41e0-9c94-9e3d6328e580"));
+            //try
+            //{
+            //    this.EmbeddedReport_web.Source = new UrlWebViewSource()
+            //    {
+            //        Url = report.EmbedUrl
+            //    };
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.WriteLine(e);
+            //    throw;
+            //}
+            var htmlSource = new HtmlWebViewSource();
+            htmlSource.Html = @"<iframe width=""100%"" height=""100%"" src =""https://app.powerbi.com/view?r=eyJrIjoiNzIzYzM4ZTAtYzcxMy00ZmE1LTkxYzgtMTEzMDcwOTMyMmIxIiwidCI6IjAwYTNhYzRkLTY5MzUtNDVjYi04Mjk5LWI5ZmU0NGYwMzNmOCIsImMiOjJ9&isMobile=true"" frameborder=""0"" allowFullScreen=""true""></iframe>";
+            EmbeddedReport_web.Source = htmlSource;
         }
     }
 }
