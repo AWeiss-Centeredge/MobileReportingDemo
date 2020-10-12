@@ -21,7 +21,7 @@ namespace MobileReporting.BusinessLogic.Services
         {
             get
             {
-                var credentials = new TokenCredentials("flUmzg2aORBZQieLZ9oJo+VJwZHrYSZFBsNPU6lXsrAyVIZdN10Iu1xH76Y1Pl05VzlKQaTUs8XG90vD0FxsvQ==", "AppKey");
+                var credentials = new TokenCredentials("", "AppKey");
                 return new PowerBIClient(credentials);
             }
         }
